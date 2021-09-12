@@ -75,8 +75,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RyU-xS-8Dz">
-                                <rect key="frame" x="192" y="84" width="30" height="30"/>
-                                <state key="normal" title="Add"/>
+                                <rect key="frame" x="176.5" y="84" width="61" height="30"/>
+                                <state key="normal" title="Add task"/>
                                 <connections>
                                     <action selector="addTaskToTableAction:" destination="PrA-1c-mRb" eventType="touchUpInside" id="t0C-Xo-DcU"/>
                                 </connections>
@@ -93,34 +93,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-2f-CVg">
-                                                    <rect key="frame" x="30" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="30" y="11.5" width="314" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYZ-iB-kfK">
-                                                    <rect key="frame" x="319" y="7" width="35" height="30"/>
-                                                    <state key="normal" title="done"/>
-                                                    <connections>
-                                                        <action selector="doneBUttonAction:" destination="PcC-NY-G7I" eventType="touchUpInside" id="h40-YH-SHJ"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pP8-2f-CVg" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="Dcu-yK-S1j"/>
-                                                <constraint firstAttribute="trailing" secondItem="cYZ-iB-kfK" secondAttribute="trailing" constant="20" id="aSs-Cb-hp5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pP8-2f-CVg" secondAttribute="trailing" constant="10" id="aer-9V-XCH"/>
                                                 <constraint firstItem="pP8-2f-CVg" firstAttribute="leading" secondItem="3xH-xJ-3bd" secondAttribute="leadingMargin" constant="10" id="h1k-h6-WcU"/>
-                                                <constraint firstItem="cYZ-iB-kfK" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="ozy-de-tUP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="doneButton" destination="cYZ-iB-kfK" id="4Lf-lL-I7h"/>
                                             <outlet property="nameTask" destination="pP8-2f-CVg" id="lv5-Bk-mKZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="PrA-1c-mRb" id="veV-bY-fCA"/>
+                                    <outlet property="delegate" destination="PrA-1c-mRb" id="oXJ-jX-Lvr"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-yd-Q3f">
@@ -151,6 +143,7 @@
                     <connections>
                         <outlet property="addTaskToTableButton" destination="RyU-xS-8Dz" id="PC0-zq-hnl"/>
                         <outlet property="taskNameField" destination="Qn5-Oz-aQq" id="jTZ-2p-Amb"/>
+                        <outlet property="taskTable" destination="lUy-tD-8HR" id="ED8-Hk-bJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1L4-Mm-xg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

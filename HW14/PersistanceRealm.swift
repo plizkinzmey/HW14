@@ -16,23 +16,6 @@ class PersistanceRealm {
     
     private let realm = try! Realm()
     
-    func addTask(name: String) {
-        let task = Task()
-        task.name = name
-        task.taskId = String(PersistanceRealm.shared.realm.objects(Task.self).count + 1)
-        try! realm.write {
-            realm.add(task)
-        }
-        
-  
-    }
-    
-//    func printTasks() {
-//        let allTasks = realm.objects(Task.self)
-//        for task in allTasks {
-//        }
-//    }
-    
     func loadTasks() -> [(String, String)] {
         var tasks = [(String, String)]()
         for task in realm.objects(Task.self) {
@@ -41,8 +24,16 @@ class PersistanceRealm {
         return tasks
     }
     
-    func removeTask(id: String) {
-        let task = realm.object(ofType: Task.self, forPrimaryKey: id)!
+    func addTask(name: String) {
+        let task = Task()
+        task.name = name
+        try! realm.write {
+            realm.add(task)
+        }
+    }
+    
+    func removeTask(taskId: String) {
+        let task = realm.object(ofType: Task.self, forPrimaryKey: taskId)!
         try! realm.write {
             realm.delete(task)
         }
