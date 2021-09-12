@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C437AF626EE67F400419CF5 /* PersistanceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C437AF526EE67F400419CF5 /* PersistanceCoreData.swift */; };
 		4C4CB2A726E8DCAB001473B5 /* ViewController2b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */; };
 		4C4CB2AA26E8FC74001473B5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */; };
 		4C4CB2AD26E902BE001473B5 /* PersistanceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C437AF526EE67F400419CF5 /* PersistanceCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceCoreData.swift; sourceTree = "<group>"; };
 		4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2b.swift; sourceTree = "<group>"; };
 		4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceRealm.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				4CC266A026E696FD00059AD9 /* AppDelegate.swift */,
 				4CC266B826E6972100059AD9 /* Persistance.swift */,
 				4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */,
-				4C437AF526EE67F400419CF5 /* PersistanceCoreData.swift */,
 				4CC266A226E696FD00059AD9 /* SceneDelegate.swift */,
 				4CC266A426E696FD00059AD9 /* ViewController2a.swift */,
 				4CC266A626E696FD00059AD9 /* Main.storyboard */,
@@ -232,7 +229,6 @@
 				4CC266A126E696FD00059AD9 /* AppDelegate.swift in Sources */,
 				4CC266B926E6972100059AD9 /* Persistance.swift in Sources */,
 				4C4CB2AD26E902BE001473B5 /* PersistanceRealm.swift in Sources */,
-				4C437AF626EE67F400419CF5 /* PersistanceCoreData.swift in Sources */,
 				4CC266A326E696FD00059AD9 /* SceneDelegate.swift in Sources */,
 				4C4CB2A726E8DCAB001473B5 /* ViewController2b.swift in Sources */,
 				4CC266BF26E6AFEC00059AD9 /* MainViewController.swift in Sources */,
