@@ -9,6 +9,7 @@ import UIKit
 
 class CDTaskTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var CDTaskCellLAbel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

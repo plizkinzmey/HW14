@@ -115,8 +115,8 @@
                                     <outlet property="delegate" destination="PrA-1c-mRb" id="oXJ-jX-Lvr"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-yd-Q3f">
-                                <rect key="frame" x="20" y="134" width="77.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task table REALM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-yd-Q3f">
+                                <rect key="frame" x="20" y="134" width="136.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -213,6 +213,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbV-jn-CPL">
                                 <rect key="frame" x="176.5" y="84" width="61" height="30"/>
                                 <state key="normal" title="Add task"/>
+                                <connections>
+                                    <action selector="addTaskCDButton:" destination="Xcg-GH-FHS" eventType="touchUpInside" id="9RP-ge-KcJ"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wI1-bb-JGC">
                                 <rect key="frame" x="20" y="165" width="374" height="642"/>
@@ -238,6 +241,9 @@
                                                 <constraint firstItem="W4e-Oz-glG" firstAttribute="centerY" secondItem="vWs-rE-KE3" secondAttribute="centerY" id="qsn-Wo-aRR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="CDTaskCellLAbel" destination="W4e-Oz-glG" id="YdR-L4-RJZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -245,8 +251,8 @@
                                     <outlet property="delegate" destination="Xcg-GH-FHS" id="DfN-nn-uZj"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgb-0L-JHZ">
-                                <rect key="frame" x="20" y="134" width="77.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task table CoreData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgb-0L-JHZ">
+                                <rect key="frame" x="20" y="134" width="153.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -270,6 +276,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7jw-aB-spV"/>
+                    <connections>
+                        <outlet property="CDAddTaskButton" destination="WbV-jn-CPL" id="Tww-pb-bo2"/>
+                        <outlet property="CDTableView" destination="wI1-bb-JGC" id="75J-fo-5jq"/>
+                        <outlet property="CDTaskField" destination="H3u-ng-bV9" id="yoZ-1e-8wz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UG7-IW-SxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

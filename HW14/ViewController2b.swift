@@ -37,7 +37,7 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
             (_, _, completion) in
             PersistanceRealm.shared.removeTask(taskId: self.tasks[indexPath.row].1)
             tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .right)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             self.tasks.remove(at: indexPath.row)
             tableView.endUpdates()
             completion(true)
