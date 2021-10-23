@@ -5,7 +5,7 @@ class Task: Object {
     
     @objc dynamic var taskId = UUID().uuidString
     @objc dynamic var name = ""
-    @objc dynamic var staus = ""
+    @objc dynamic var staus = false
     
     override static func primaryKey() -> String? {
         return "taskId"
@@ -17,8 +17,8 @@ class PersistanceRealm {
     
     private let realm = try! Realm()
     
-    func loadTasks() -> [(String, String, String)] {
-        var tasks = [(String, String, String)]()
+    func loadTasks() -> [(String, String, Bool)] {
+        var tasks = [(String, String, Bool)]()
         for task in realm.objects(Task.self) {
             tasks.append((task.name, task.taskId, task.staus))
         }
@@ -28,17 +28,17 @@ class PersistanceRealm {
     func addTask(name: String) {
         let task = Task()
         task.name = name
-        task.staus = "unDone"
+        task.staus = false
         try! realm.write {
             realm.add(task)
         }
-       // print(task)
+        print(task)
     }
     
     func updateTask (taskId: String) {
         let task = realm.object(ofType: Task.self, forPrimaryKey: taskId)!
         try! realm.write {
-            task.staus = "Done"
+            task.staus = !(task.staus)
         }
         print(task)
     }

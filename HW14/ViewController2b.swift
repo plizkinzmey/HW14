@@ -44,6 +44,11 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TaskTableViewCell
         cell.nameTask.text = tasks[indexPath.row].0
+        if tasks[indexPath.row].2 == true {
+            cell.checkBoxDone.on = true
+        } else {
+            cell.checkBoxDone.on = false
+        }
         cell.checkBoxAction = {
             cell in
             PersistanceRealm.shared.updateTask(taskId: self.tasks[indexPath.row].1)
