@@ -32,7 +32,6 @@ class PersistanceRealm {
         try! realm.write {
             realm.add(task)
         }
-        print(task)
     }
     
     func updateTask (taskId: String) {
@@ -40,7 +39,6 @@ class PersistanceRealm {
         try! realm.write {
             task.staus = !(task.staus)
         }
-        print(task)
     }
     
     func removeTask(taskId: String) {

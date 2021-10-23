@@ -58,7 +58,7 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let done = UIContextualAction(style: .normal, title: "Done") {
+        let done = UIContextualAction(style: .destructive, title: "Удалить") {
             (_, _, completion) in
             PersistanceRealm.shared.removeTask(taskId: self.tasks[indexPath.row].1)
             tableView.beginUpdates()
