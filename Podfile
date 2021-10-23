@@ -7,5 +7,6 @@ target 'HW14' do
   # Pods for HW14
   pod 'RealmSwift', '~>10'
   pod 'Alamofire', '~> 5.2'
+  pod 'BEMCheckBox'
 
 end

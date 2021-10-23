@@ -1,7 +1,8 @@
 import UIKit
 
+
 protocol NewTaskDelegate: class {
-    func update(taskText: String)
+    func addTask(taskText: String)
     func updateConstraintTaskTableTop()
 }
 
@@ -43,8 +44,13 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TaskTableViewCell
         cell.nameTask.text = tasks[indexPath.row].0
+        cell.checkBoxAction = {
+            cell in
+            PersistanceRealm.shared.updateTask(taskId: self.tasks[indexPath.row].1)
+        }
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let done = UIContextualAction(style: .normal, title: "Done") {
@@ -63,7 +69,7 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController2b: NewTaskDelegate {
-    func update(taskText: String) {
+    func addTask(taskText: String) {
         PersistanceRealm.shared.addTask(name: taskText)
         tasks = PersistanceRealm.shared.loadTasks()
         taskTable.reloadData()

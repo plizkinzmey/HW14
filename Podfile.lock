@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.4)
+  - BEMCheckBox (1.4.1)
   - Realm (10.17.0):
     - Realm/Headers (= 10.17.0)
   - Realm/Headers (10.17.0)
@@ -8,19 +9,22 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - BEMCheckBox
   - RealmSwift (~> 10)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BEMCheckBox
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Realm: 9533276bd76f66aa2fd0d3ffe700c1f6023dcab6
   RealmSwift: 57f5d59aa29852587aad1e861989e7af139894b5
 
-PODFILE CHECKSUM: c3e459c62b18ac55a27b9e6f78fd8ea4212ebb9e
+PODFILE CHECKSUM: a1fe6f3872699207ef0b4f8215dcb603ce9d7997
 
 COCOAPODS: 1.11.0

@@ -28,7 +28,7 @@ class NewTaskViewController: UIViewController {
             self.dismiss(animated: false, completion: nil)
          
         } else {
-            newTaskDelegate?.update(taskText: newTaskField.text!)
+            newTaskDelegate?.addTask(taskText: newTaskField.text!)
             newTaskDelegate?.updateConstraintTaskTableTop()
             self.dismiss(animated: false, completion: nil)
         }

@@ -135,20 +135,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-2f-CVg">
-                                                    <rect key="frame" x="30" y="12" width="314" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-2f-CVg">
+                                                    <rect key="frame" x="61" y="11.5" width="41.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJS-sQ-Hsd" customClass="BEMCheckBox">
+                                                    <rect key="frame" x="30" y="12" width="21" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <connections>
+                                                        <action selector="checkBoxAction:" destination="PcC-NY-G7I" eventType="valueChanged" id="vyI-cC-euv"/>
+                                                    </connections>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="Dcu-yK-S1j"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pP8-2f-CVg" secondAttribute="trailing" constant="10" id="aer-9V-XCH"/>
-                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="leading" secondItem="3xH-xJ-3bd" secondAttribute="leadingMargin" constant="10" id="h1k-h6-WcU"/>
+                                                <constraint firstItem="AJS-sQ-Hsd" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="D78-US-FPv"/>
+                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="leading" secondItem="AJS-sQ-Hsd" secondAttribute="trailing" constant="10" id="Kbq-Yz-TG9"/>
+                                                <constraint firstItem="AJS-sQ-Hsd" firstAttribute="leading" secondItem="3xH-xJ-3bd" secondAttribute="leadingMargin" constant="10" id="Mdu-K1-61U"/>
+                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="hL3-5j-HIL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkBoxDone" destination="AJS-sQ-Hsd" id="cri-gW-Jgb"/>
                                             <outlet property="nameTask" destination="pP8-2f-CVg" id="lv5-Bk-mKZ"/>
                                         </connections>
                                     </tableViewCell>
@@ -322,6 +331,11 @@
             <point key="canvasLocation" x="1275" y="46"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="AJS-sQ-Hsd">
+            <size key="intrinsicContentSize" width="21" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
