@@ -1,8 +1,15 @@
 import UIKit
 
+protocol NewTaskDelegate: class {
+    func update(taskText: String)
+    func updateConstraintTaskTableTop()
+}
+
 class ViewController2b: UIViewController {
     
-    @IBOutlet weak var addTaskToTableButton: UIButton!
+
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var taskTableTop: NSLayoutConstraint!
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskTable: UITableView!
     var tasks = PersistanceRealm.shared.loadTasks()
@@ -12,11 +19,18 @@ class ViewController2b: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func addTaskToTableAction(_ sender: Any) {
-        PersistanceRealm.shared.addTask(name:taskNameField.text!)
-        tasks = PersistanceRealm.shared.loadTasks()
-        taskTable.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewTask" {
+            if let newTaskVC = segue.destination as? NewTaskViewController {
+                newTaskVC.newTaskDelegate = self
+            }
+        }
     }
+    
+    @IBAction func plusButtonAction(_ sender: Any) {
+        taskTableTop.constant = 50
+    }
+    
     
 }
 
@@ -45,5 +59,17 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
         let config = UISwipeActionsConfiguration(actions: [done])
         config.performsFirstActionWithFullSwipe = false
         return config
+    }
+}
+
+extension ViewController2b: NewTaskDelegate {
+    func update(taskText: String) {
+        PersistanceRealm.shared.addTask(name: taskText)
+        tasks = PersistanceRealm.shared.loadTasks()
+        taskTable.reloadData()
+    }
+
+    func updateConstraintTaskTableTop() {
+            taskTableTop.constant = 10
     }
 }

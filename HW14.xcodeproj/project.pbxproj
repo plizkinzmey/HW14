@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C437B1226EE78C500419CF5 /* ViewController2c.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C437B1126EE78C400419CF5 /* ViewController2c.swift */; };
 		4C437B1526EE795C00419CF5 /* CDTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */; };
+		4C439E7827247A9300FD02BB /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C439E7727247A9300FD02BB /* NewTaskViewController.swift */; };
 		4C4CB2A726E8DCAB001473B5 /* ViewController2b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */; };
 		4C4CB2AA26E8FC74001473B5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */; };
 		4C4CB2AD26E902BE001473B5 /* PersistanceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		4C437B1126EE78C400419CF5 /* ViewController2c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2c.swift; sourceTree = "<group>"; };
 		4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDTaskTableViewCell.swift; sourceTree = "<group>"; };
+		4C439E7727247A9300FD02BB /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2b.swift; sourceTree = "<group>"; };
 		4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceRealm.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				4CC266A226E696FD00059AD9 /* SceneDelegate.swift */,
 				4CC266A426E696FD00059AD9 /* ViewController2a.swift */,
 				4CC266A626E696FD00059AD9 /* Main.storyboard */,
+				4C439E7727247A9300FD02BB /* NewTaskViewController.swift */,
 				4C437B1126EE78C400419CF5 /* ViewController2c.swift */,
 				4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */,
 				4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */,
@@ -239,6 +242,7 @@
 				4CC266A326E696FD00059AD9 /* SceneDelegate.swift in Sources */,
 				4C437B1526EE795C00419CF5 /* CDTaskTableViewCell.swift in Sources */,
 				4C4CB2A726E8DCAB001473B5 /* ViewController2b.swift in Sources */,
+				4C439E7827247A9300FD02BB /* NewTaskViewController.swift in Sources */,
 				4CC266BF26E6AFEC00059AD9 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

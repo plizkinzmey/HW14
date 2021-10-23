@@ -68,7 +68,7 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let done = UIContextualAction(style: .normal, title: "Done") {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") {
             (_, _, completion) in
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -85,7 +85,27 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
             }
             completion(true)
         }
-        let config = UISwipeActionsConfiguration(actions: [done])
+        
+        let done = UIContextualAction(style: .normal, title: "Done") {
+            (_, _, completion) in
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let index = indexPath.row
+            
+            context.delete(self.tasks[index] as NSManagedObject)
+            
+            do {
+                try context.save()
+                self.tasks.remove(at: indexPath.row)
+                self.CDTableView.reloadData()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            completion(true)
+        }
+        
+        let config = UISwipeActionsConfiguration(actions: [delete, done])
         config.performsFirstActionWithFullSwipe = false
         return config
     }
