@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C11818B272509720026F0A1 /* AlomofireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C118189272509710026F0A1 /* AlomofireTableViewCell.swift */; };
+		4C11818C272509720026F0A1 /* AlomofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11818A272509720026F0A1 /* AlomofireViewController.swift */; };
+		4C11818F27250A220026F0A1 /* StandartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11818E27250A220026F0A1 /* StandartViewController.swift */; };
+		4C11819227250A590026F0A1 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11819127250A590026F0A1 /* WeatherTableViewCell.swift */; };
 		4C437B1226EE78C500419CF5 /* ViewController2c.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C437B1126EE78C400419CF5 /* ViewController2c.swift */; };
 		4C437B1526EE795C00419CF5 /* CDTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */; };
 		4C439E7827247A9300FD02BB /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C439E7727247A9300FD02BB /* NewTaskViewController.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C118189272509710026F0A1 /* AlomofireTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlomofireTableViewCell.swift; sourceTree = "<group>"; };
+		4C11818A272509720026F0A1 /* AlomofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlomofireViewController.swift; sourceTree = "<group>"; };
+		4C11818E27250A220026F0A1 /* StandartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandartViewController.swift; sourceTree = "<group>"; };
+		4C11819127250A590026F0A1 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		4C437B1126EE78C400419CF5 /* ViewController2c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2c.swift; sourceTree = "<group>"; };
 		4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDTaskTableViewCell.swift; sourceTree = "<group>"; };
 		4C439E7727247A9300FD02BB /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +97,10 @@
 		4CC2669F26E696FD00059AD9 /* HW14 */ = {
 			isa = PBXGroup;
 			children = (
+				4C11819127250A590026F0A1 /* WeatherTableViewCell.swift */,
+				4C11818E27250A220026F0A1 /* StandartViewController.swift */,
+				4C118189272509710026F0A1 /* AlomofireTableViewCell.swift */,
+				4C11818A272509720026F0A1 /* AlomofireViewController.swift */,
 				4CC266A026E696FD00059AD9 /* AppDelegate.swift */,
 				4CC266B826E6972100059AD9 /* Persistance.swift */,
 				4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */,
@@ -234,9 +246,13 @@
 			files = (
 				4C4CB2AA26E8FC74001473B5 /* TaskTableViewCell.swift in Sources */,
 				4CC266A526E696FD00059AD9 /* ViewController2a.swift in Sources */,
+				4C11818F27250A220026F0A1 /* StandartViewController.swift in Sources */,
+				4C11818B272509720026F0A1 /* AlomofireTableViewCell.swift in Sources */,
+				4C11818C272509720026F0A1 /* AlomofireViewController.swift in Sources */,
 				4CC266AB26E696FD00059AD9 /* HW14.xcdatamodeld in Sources */,
 				4C437B1226EE78C500419CF5 /* ViewController2c.swift in Sources */,
 				4CC266A126E696FD00059AD9 /* AppDelegate.swift in Sources */,
+				4C11819227250A590026F0A1 /* WeatherTableViewCell.swift in Sources */,
 				4CC266B926E6972100059AD9 /* Persistance.swift in Sources */,
 				4C4CB2AD26E902BE001473B5 /* PersistanceRealm.swift in Sources */,
 				4CC266A326E696FD00059AD9 /* SceneDelegate.swift in Sources */,
