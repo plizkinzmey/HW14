@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 class CDTaskTableViewCell: UITableViewCell {
+    
+    var checkBoxAction: ((UITableViewCell) -> Void)?
 
+    @IBOutlet weak var checkBoxCD: BEMCheckBox!
     @IBOutlet weak var CDTaskCellLAbel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,4 +25,7 @@ class CDTaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func checkBoxAction(_ sender: Any) {
+        checkBoxAction?(self)
+    }
 }

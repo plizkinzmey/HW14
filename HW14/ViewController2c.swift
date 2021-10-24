@@ -18,6 +18,7 @@ class ViewController2c: UIViewController {
         
         let taskObject = Tasks(entity: entity, insertInto: context)
         taskObject.title = title
+        taskObject.isDone = false
         
         do {
             try context.save()
@@ -27,7 +28,6 @@ class ViewController2c: UIViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +63,27 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellCD") as! CDTaskTableViewCell
         let task = tasks[indexPath.row]
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
         cell.CDTaskCellLAbel.text = task.title
+        
+        if tasks[indexPath.row].isDone == true {
+            cell.checkBoxCD.on = true
+        } else {
+            cell.checkBoxCD.on = false
+        }
+        cell.checkBoxAction = {
+            cell in
+            do {
+                try context.save()
+                self.tasks[indexPath.row].isDone = !(self.tasks[indexPath.row].isDone)
+                self.CDTableView.reloadData()
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
         return cell
     }
     
@@ -86,26 +106,7 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
             completion(true)
         }
         
-        let done = UIContextualAction(style: .normal, title: "Done") {
-            (_, _, completion) in
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let index = indexPath.row
-            
-            context.delete(self.tasks[index] as NSManagedObject)
-            
-            do {
-                try context.save()
-                self.tasks.remove(at: indexPath.row)
-                self.CDTableView.reloadData()
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            completion(true)
-        }
-        
-        let config = UISwipeActionsConfiguration(actions: [delete, done])
+        let config = UISwipeActionsConfiguration(actions: [delete])
         config.performsFirstActionWithFullSwipe = false
         return config
     }
