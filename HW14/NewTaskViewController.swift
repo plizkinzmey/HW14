@@ -32,8 +32,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate
             
         } else {
             newTaskDelegate?.addTask(taskText: newTaskField.text!)
-            newTaskDelegate?.updateConstraintTaskTableTop()
-            self.dismiss(animated: false, completion: nil)
+            newTaskField.text = ""
         }
     }
     
