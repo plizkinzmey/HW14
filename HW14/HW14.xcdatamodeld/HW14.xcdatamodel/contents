@@ -4,7 +4,9 @@
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Weather" representedClassName="Weather" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="Tasks" positionX="-45" positionY="-1" width="128" height="73"/>
+        <element name="Weather" positionX="-18" positionY="45" width="128" height="43"/>
     </elements>
 </model>

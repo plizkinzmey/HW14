@@ -1,7 +1,7 @@
 import UIKit
 
 
-protocol NewTaskDelegate: class {
+protocol NewTaskDelegate: AnyObject {
     func addTask(taskText: String)
     func updateConstraintTaskTableTop()
 }

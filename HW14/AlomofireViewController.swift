@@ -15,14 +15,27 @@ class AlomofireViewController: UIViewController {
     @IBOutlet weak var alamofireWeatherImageView: UIImageView!
     @IBOutlet weak var alamofireWeatherLabel: UILabel!
     @IBOutlet weak var alomofireWeatherTableView: UITableView!
+    @IBOutlet weak var header: UILabel!
     
     var mainWeatherDataMoscow1Day: MainWeatherDataMoscow1Day? = nil
     var mainWeatherDataMoscow7Days: MainWeatherDataMoscow7Days? = nil
+    var weather1DayRealmData = PersistanceRealm.shared.loadWeather1Day()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if weather1DayRealmData.isEmpty == false {
+            alamofireWeatherLabel.text = "\(Int(weather1DayRealmData[0].temp))℃"
+            header.text = "Погода в Москве (Кеш)"
+            if let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weather1DayRealmData[0].image).png") {
+                if let data = try? Data(contentsOf: iconUrl) {
+                    DispatchQueue.main.async {
+                        self.alamofireWeatherImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+        }
         getWeatherMoscow1DayAlamofire{(MainWeatherDataMoscow1Day) in
             self.mainWeatherDataMoscow1Day = MainWeatherDataMoscow1Day
             self.alamofireWeatherLabel.text = "\(Int(self.mainWeatherDataMoscow1Day!.main!.temp))℃"
@@ -34,32 +47,43 @@ class AlomofireViewController: UIViewController {
                     }
                 }
             }
+            self.header.text = "Текущая погода в Москве"
         }
         getWeatherMoscow7Days {(MainWeatherDataMoscow7Days) in
             self.mainWeatherDataMoscow7Days = MainWeatherDataMoscow7Days
             self.alomofireWeatherTableView.reloadData()
-            
         }
     }
     
     func getWeatherMoscow1DayAlamofire(completion: @escaping (MainWeatherDataMoscow1Day) -> Void) {
         
-        AF.request("https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=be31cc90c56427be4c90f847549a55a2").responseData {
-            response in
-            switch response.result {
-            case let .success(value):
-                DispatchQueue.main.async {
-                    do {
-                        let mainWeatherData = try JSONDecoder().decode(MainWeatherDataMoscow1Day.self, from: value)
-                        completion(mainWeatherData)
-                    } catch let error {
-                        print(error)
+        let seconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            AF.request("https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=be31cc90c56427be4c90f847549a55a2").responseData {
+                response in
+                switch response.result {
+                case let .success(value):
+                    DispatchQueue.main.async {
+                        do {
+                            let mainWeatherData = try JSONDecoder().decode(MainWeatherDataMoscow1Day.self, from: value)
+                            completion(mainWeatherData)
+                            if self.weather1DayRealmData.isEmpty {
+                                PersistanceRealm.shared.addWeather1Day(weatherData: mainWeatherData)
+                            } else {
+                                PersistanceRealm.shared.updateWeather1Day(id: self.weather1DayRealmData[0].id, weatherData: mainWeatherData)
+                            }
+                            
+                        } catch let error {
+                            print(error)
+                        }
                     }
+                case let .failure(error):
+                    print(error)
                 }
-            case let .failure(error):
-                print(error)
             }
         }
+        
+       
     }
     
     func getWeatherMoscow7Days(completion: @escaping (MainWeatherDataMoscow7Days) -> Void){
@@ -71,6 +95,7 @@ class AlomofireViewController: UIViewController {
                     do {
                         let mainWeatherDataMoscow7Days = try JSONDecoder().decode(MainWeatherDataMoscow7Days.self, from: value)
                         completion(mainWeatherDataMoscow7Days)
+                        print(mainWeatherDataMoscow7Days)
                     } catch let error {
                         print(error)
                     }
@@ -80,6 +105,7 @@ class AlomofireViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension AlomofireViewController:  UITableViewDataSource {
