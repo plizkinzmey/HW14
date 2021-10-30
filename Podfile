@@ -8,5 +8,4 @@ target 'HW14' do
   pod 'RealmSwift', '~>10'
   pod 'Alamofire', '~> 5.2'
   pod 'BEMCheckBox'
-
 end

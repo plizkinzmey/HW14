@@ -58,31 +58,31 @@ class PersistanceRealm {
         }
     }
     
-    func addWeather1Day (weatherData: MainWeatherDataMoscow1Day) {
-        let weather = Weather1Day()
-        weather.temp = weatherData.main?.temp ?? 0
-        weather.icon = weatherData.weather[0]?.icon ?? ""
-        try! realm.write {
-            realm.add(weather)
-        }
-    }
+//    func addWeather1Day (weatherData: MainWeatherDataMoscow1Day) {
+//        let weather = Weather1Day()
+//        weather.temp = weatherData.main?.temp ?? 0
+//        weather.icon = weatherData.weather[0]?.icon ?? ""
+//        try! realm.write {
+//            realm.add(weather)
+//        }
+//    }
+//
+//    func updateWeather1Day (id: String, weatherData: MainWeatherDataMoscow1Day) {
+//        let weather = realm.object(ofType: Weather1Day.self, forPrimaryKey: id)!
+//        try! realm.write {
+//            weather.temp = weatherData.main?.temp ?? 0
+//            weather.icon = weatherData.weather[0]?.icon ?? ""
+//        }
+//    }
     
-    func updateWeather1Day (id: String, weatherData: MainWeatherDataMoscow1Day) {
-        let weather = realm.object(ofType: Weather1Day.self, forPrimaryKey: id)!
-        try! realm.write {
-            weather.temp = weatherData.main?.temp ?? 0
-            weather.icon = weatherData.weather[0]?.icon ?? ""
-        }
-    }
+//    func loadWeather1Day() -> [(id: String, temp: Float, image: String)] {
+//        var weathers = [(id: String, temp: Float, image: String)]()
+//        for weatherData in realm.objects(Weather1Day.self) {
+//            weathers.append((weatherData.id, weatherData.temp, weatherData.icon))
+//        }
+//        return weathers
+//    }
     
-    func loadWeather1Day() -> [(id: String, temp: Float, image: String)] {
-        var weathers = [(id: String, temp: Float, image: String)]()
-        for weatherData in realm.objects(Weather1Day.self) {
-            weathers.append((weatherData.id, weatherData.temp, weatherData.icon))
-        }
-        return weathers
-    }
-    
-    func addWeather7Days(weather7DaysJSON: MainWeatherDataMoscow7Days) {
-    }
+//    func addWeather7Days(weather7DaysJSON: MainWeatherDataMoscow7Days) {
+//    }
 }
