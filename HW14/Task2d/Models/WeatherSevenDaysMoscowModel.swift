@@ -14,15 +14,19 @@ class WeatherSevenDaysMoscow: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var daily: List<Daily>
     convenience init(daily: [Daily]) {
-            self.init()
-            self.daily.append(objectsIn: daily)
-        }
+        self.init()
+        self.daily.append(objectsIn: daily)
+    }
 }
 
 // MARK: - Daily
 class Daily: Object {
     @Persisted var dt: Int = 0
     @Persisted var temp: Temp?
+    convenience init(temp: Temp) {
+        self.init()
+        self.temp = temp
+    }
 }
 
 // MARK: - Temp
@@ -37,8 +41,16 @@ class WeatherSevenDaysMoscowRealm {
     
     func addWeatherOneDayMoscowRealm(data: Data) {
         try! realm.write {
+            realm.delete(realm.objects(WeatherSevenDaysMoscow.self))
+            realm.delete(realm.objects(Daily.self))
+            realm.delete(realm.objects(Temp.self))
             let json = try! JSONSerialization.jsonObject(with: data, options: [])
             realm.create(WeatherSevenDaysMoscow.self, value: json)
         }
+    }
+    
+    func loadWeatherSevenDayMoscowRealm() -> WeatherSevenDaysMoscow {
+        let dataRealm = realm.objects(WeatherSevenDaysMoscow.self).first
+        return dataRealm!
     }
 }
