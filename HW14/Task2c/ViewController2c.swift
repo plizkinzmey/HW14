@@ -73,16 +73,18 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.checkBoxCD.on = false
         }
+        
         cell.checkBoxAction = {
             cell in
             do {
-                try context.save()
+//                try context.save()
                 self.tasks[indexPath.row].isDone = !(self.tasks[indexPath.row].isDone)
+                try context.save()
                 self.CDTableView.reloadData()
-                
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
+      
         }
         return cell
     }

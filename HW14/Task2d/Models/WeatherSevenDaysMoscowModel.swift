@@ -41,16 +41,17 @@ class WeatherSevenDaysMoscowRealm {
     
     func addWeatherOneDayMoscowRealm(data: Data) {
         try! realm.write {
-            realm.delete(realm.objects(WeatherSevenDaysMoscow.self))
-            realm.delete(realm.objects(Daily.self))
-            realm.delete(realm.objects(Temp.self))
+            //            realm.delete(realm.objects(WeatherSevenDaysMoscow.self))
+            //            realm.delete(realm.objects(Daily.self))
+            //            realm.delete(realm.objects(Temp.self))
             let json = try! JSONSerialization.jsonObject(with: data, options: [])
             realm.create(WeatherSevenDaysMoscow.self, value: json)
         }
     }
     
-    func loadWeatherSevenDayMoscowRealm() -> WeatherSevenDaysMoscow {
-        let dataRealm = realm.objects(WeatherSevenDaysMoscow.self).first
+    func loadWeatherSevenDayMoscowRealm()  -> WeatherSevenDaysMoscow {
+        let dataRealm = realm.objects(WeatherSevenDaysMoscow.self).last
         return dataRealm!
     }
 }
+

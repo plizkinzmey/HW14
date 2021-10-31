@@ -78,6 +78,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C571A7C272E4350004070F9 /* Task2a */ = {
+			isa = PBXGroup;
+			children = (
+				4CC266B826E6972100059AD9 /* Persistance.swift */,
+				4CC266A426E696FD00059AD9 /* ViewController2a.swift */,
+			);
+			path = Task2a;
+			sourceTree = "<group>";
+		};
+		4C571A7D272E4440004070F9 /* Task2b */ = {
+			isa = PBXGroup;
+			children = (
+				4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */,
+				4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */,
+				4C439E7727247A9300FD02BB /* NewTaskViewController.swift */,
+			);
+			path = Task2b;
+			sourceTree = "<group>";
+		};
+		4C571A7E272E450F004070F9 /* Task2c */ = {
+			isa = PBXGroup;
+			children = (
+				4C437B1126EE78C400419CF5 /* ViewController2c.swift */,
+				4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */,
+			);
+			path = Task2c;
+			sourceTree = "<group>";
+		};
 		4C6EC50E272DA57000583491 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,19 +147,15 @@
 		4CC2669F26E696FD00059AD9 /* HW14 */ = {
 			isa = PBXGroup;
 			children = (
+				4C571A7C272E4350004070F9 /* Task2a */,
+				4C571A7D272E4440004070F9 /* Task2b */,
+				4C571A7E272E450F004070F9 /* Task2c */,
 				4C6EC511272DADA700583491 /* Task2d */,
 				4CC266A026E696FD00059AD9 /* AppDelegate.swift */,
-				4CC266B826E6972100059AD9 /* Persistance.swift */,
 				4C4CB2AC26E902BE001473B5 /* PersistanceRealm.swift */,
 				4CC266A226E696FD00059AD9 /* SceneDelegate.swift */,
-				4CC266A426E696FD00059AD9 /* ViewController2a.swift */,
 				4CC266A626E696FD00059AD9 /* Main.storyboard */,
-				4C439E7727247A9300FD02BB /* NewTaskViewController.swift */,
-				4C437B1126EE78C400419CF5 /* ViewController2c.swift */,
-				4C4CB2A926E8FC74001473B5 /* TaskTableViewCell.swift */,
-				4C4CB2A626E8DCAB001473B5 /* ViewController2b.swift */,
 				4CC266BE26E6AFEC00059AD9 /* MainViewController.swift */,
-				4C437B1426EE795C00419CF5 /* CDTaskTableViewCell.swift */,
 				4CC266AC26E696FE00059AD9 /* Assets.xcassets */,
 				4CC266AE26E696FE00059AD9 /* LaunchScreen.storyboard */,
 				4CC266B126E696FE00059AD9 /* Info.plist */,

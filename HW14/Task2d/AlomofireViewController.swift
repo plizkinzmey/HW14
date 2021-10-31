@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AlomofireViewController: UIViewController {
     
@@ -14,23 +15,23 @@ class AlomofireViewController: UIViewController {
     @IBOutlet weak var alomofireWeatherTableView: UITableView!
     @IBOutlet weak var header: UILabel!
     
-    var weatherOneDayResultCache:[(id:String, temp:Int, icon:String)]?
+    var weatherOneDayResultCache: WeatherOneDayMoscow?
     var weatherSevenDaysResultCache: WeatherSevenDaysMoscow?
     
     
     override func viewDidLoad() {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         super.viewDidLoad()
         
-        if WeatherOneDayMoscowRealm.shared.isEmpty() == true {
-            getWeatherOneDayMoscow()
-            getWeatherSevenDaysMoscow()
-        }
+        WeatherOneDayMoscowRealm.shared.defaultModel()
         
         presentData()
+        
         getWeatherOneDayMoscow()
         getWeatherSevenDaysMoscow()
         
-        let seconds = 5.0
+        let seconds = 3.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.presentData()
             self.alomofireWeatherTableView.reloadData()
@@ -40,18 +41,16 @@ class AlomofireViewController: UIViewController {
     func presentData() {
         self.weatherOneDayResultCache = WeatherOneDayMoscowRealm.shared.loadWeatherOneDayMoscowRealm()
         self.weatherSevenDaysResultCache = WeatherSevenDaysMoscowRealm.shared.loadWeatherSevenDayMoscowRealm()
-        print("Update")
         let currentDateTime = Date()
         print(currentDateTime)
-        alamofireWeatherLabel.text = "\(weatherOneDayResultCache?.first?.temp ?? 00)"
-        if let iconUrl = URL(string: "https://openweathermap.org/img/w/\(String(describing: weatherOneDayResultCache!.first!.icon)).png") {
+        alamofireWeatherLabel.text = "\(String(describing: Int(weatherOneDayResultCache!.main!.temp)))"
+        if let iconUrl = URL(string: "https://openweathermap.org/img/w/\(String(describing: weatherOneDayResultCache!.weather.first!.icon)).png") {
             if let data = try? Data(contentsOf: iconUrl) {
                 DispatchQueue.main.async {
                     self.alamofireWeatherImageView.image = UIImage(data: data)
                 }
             }
         }
-        
     }
 }
 
@@ -62,15 +61,15 @@ extension AlomofireViewController:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlomofireWeatherCell", for: indexPath) as! AlomofireTableViewCell
-        let weatherInformation = weatherSevenDaysResultCache?.daily[indexPath.row]
-        let date = Date(timeIntervalSince1970: TimeInterval(weatherInformation!.dt))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let strDate = dateFormatter.string(from: date)
-        cell.alomofireDateLabel?.text = strDate
-        cell.alomofireDegreeLabel?.text = "\(Int(weatherInformation?.temp?.day ?? 000))℃"
-        let currentDateTime = Date()
-        print(currentDateTime)
+        if weatherSevenDaysResultCache != nil {
+            let weatherInformation = weatherSevenDaysResultCache?.daily[indexPath.row]
+            let date = Date(timeIntervalSince1970: TimeInterval(weatherInformation!.dt))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let strDate = dateFormatter.string(from: date)
+            cell.alomofireDateLabel?.text = strDate
+            cell.alomofireDegreeLabel?.text = "\(Int(weatherInformation?.temp?.day ?? 000))℃"
+        }
         return cell
     }
 }

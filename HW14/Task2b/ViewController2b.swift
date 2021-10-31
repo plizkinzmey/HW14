@@ -8,7 +8,7 @@ protocol NewTaskDelegate: AnyObject {
 
 class ViewController2b: UIViewController {
     
-
+    
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var taskTableTop: NSLayoutConstraint!
     @IBOutlet weak var taskNameField: UITextField!
@@ -80,8 +80,8 @@ extension ViewController2b: NewTaskDelegate {
         tasks = PersistanceRealm.shared.loadTasks()
         taskTable.reloadData()
     }
-
+    
     func updateConstraintTaskTableTop() {
-            taskTableTop.constant = 10
+        taskTableTop.constant = 10
     }
 }

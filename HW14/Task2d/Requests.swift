@@ -25,6 +25,7 @@ func getWeatherOneDayMoscow () {
         case let .success(value):
             DispatchQueue.main.async {
                 WeatherOneDayMoscowRealm.shared.addWeatherOneDayMoscowRealm(data: value)
+                print(value)
             }
         case let .failure(error):
             print(error)
