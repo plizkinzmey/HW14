@@ -122,7 +122,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REALM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkG-Co-ZDX">
-                                <rect key="frame" x="338.5" y="20" width="55.5" height="21"/>
+                                <rect key="frame" x="338.5" y="20" width="55.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -138,30 +138,87 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-2f-CVg">
-                                                    <rect key="frame" x="61" y="11.5" width="41.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJS-sQ-Hsd" customClass="BEMCheckBox">
-                                                    <rect key="frame" x="30" y="12" width="21" height="20"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <connections>
-                                                        <action selector="checkBoxAction:" destination="PcC-NY-G7I" eventType="valueChanged" id="vyI-cC-euv"/>
-                                                    </connections>
-                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-OS-xIa">
+                                                    <rect key="frame" x="10" y="9.5" width="354" height="25"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJS-sQ-Hsd" customClass="BEMCheckBox">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="U2D-w8-DRR"/>
+                                                                <constraint firstAttribute="height" constant="25" id="sFx-f5-w3A"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="checkBoxAction:" destination="PcC-NY-G7I" eventType="valueChanged" id="vyI-cC-euv"/>
+                                                            </connections>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-2f-CVg">
+                                                            <rect key="frame" x="35" y="0.0" width="41.5" height="25"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfH-yU-t9M">
+                                                            <rect key="frame" x="86.5" y="0.0" width="162.5" height="25"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D84-tH-Czc">
+                                                            <rect key="frame" x="259" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="M2q-wy-cSM"/>
+                                                                <constraint firstAttribute="height" constant="25" id="MwP-rt-lwi"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="checkmark.seal" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="acceptEditButtonAction:" destination="PcC-NY-G7I" eventType="touchUpInside" id="Hl8-B7-gyg"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wj-H7-nJ6">
+                                                            <rect key="frame" x="294" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="pvE-th-RHv"/>
+                                                            </constraints>
+                                                            <color key="tintColor" systemColor="systemPinkColor"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="xmark.seal" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="exitWithoutSaveAction:" destination="PcC-NY-G7I" eventType="touchUpInside" id="eBb-N5-aLB"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78M-dV-Wh3">
+                                                            <rect key="frame" x="329" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="mBQ-P1-aGw"/>
+                                                                <constraint firstAttribute="height" constant="25" id="pD2-ST-0pj"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="editTaskAction:" destination="PcC-NY-G7I" eventType="touchUpInside" id="TpC-tX-GWj"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="AJS-sQ-Hsd" firstAttribute="centerY" secondItem="OgC-OS-xIa" secondAttribute="centerY" id="baR-by-dMV"/>
+                                                        <constraint firstItem="pfH-yU-t9M" firstAttribute="centerY" secondItem="OgC-OS-xIa" secondAttribute="centerY" id="eCM-RJ-CMc"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AJS-sQ-Hsd" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="D78-US-FPv"/>
-                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="leading" secondItem="AJS-sQ-Hsd" secondAttribute="trailing" constant="10" id="Kbq-Yz-TG9"/>
-                                                <constraint firstItem="AJS-sQ-Hsd" firstAttribute="leading" secondItem="3xH-xJ-3bd" secondAttribute="leadingMargin" constant="10" id="Mdu-K1-61U"/>
-                                                <constraint firstItem="AJS-sQ-Hsd" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="fC3-Pr-WwG"/>
-                                                <constraint firstItem="pP8-2f-CVg" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="hL3-5j-HIL"/>
+                                                <constraint firstAttribute="trailing" secondItem="OgC-OS-xIa" secondAttribute="trailing" constant="10" id="2vh-qi-byI"/>
+                                                <constraint firstItem="OgC-OS-xIa" firstAttribute="centerX" secondItem="3xH-xJ-3bd" secondAttribute="centerX" id="bGS-FQ-78E"/>
+                                                <constraint firstItem="OgC-OS-xIa" firstAttribute="leading" secondItem="3xH-xJ-3bd" secondAttribute="leading" constant="10" id="f7J-rv-bXV"/>
+                                                <constraint firstItem="OgC-OS-xIa" firstAttribute="centerY" secondItem="3xH-xJ-3bd" secondAttribute="centerY" id="ugl-8s-2XC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="acceptEditTaskButton" destination="D84-tH-Czc" id="0Oz-qq-yOJ"/>
                                             <outlet property="checkBoxDone" destination="AJS-sQ-Hsd" id="cri-gW-Jgb"/>
+                                            <outlet property="editTaskButton" destination="78M-dV-Wh3" id="inB-AB-Aax"/>
+                                            <outlet property="editTaskField" destination="pfH-yU-t9M" id="XUM-DL-ljm"/>
+                                            <outlet property="exitWithoutSaveButton" destination="7wj-H7-nJ6" id="b8L-ia-ORP"/>
                                             <outlet property="nameTask" destination="pP8-2f-CVg" id="lv5-Bk-mKZ"/>
                                         </connections>
                                     </tableViewCell>
@@ -276,30 +333,88 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4e-Oz-glG">
-                                                    <rect key="frame" x="61" y="11.5" width="41.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8l-ek-M0u" customClass="BEMCheckBox">
-                                                    <rect key="frame" x="30" y="12" width="21" height="20"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <connections>
-                                                        <action selector="checkBoxAction:" destination="Nya-zd-XPA" eventType="valueChanged" id="9TA-o3-8RR"/>
-                                                    </connections>
-                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-kk-P9T">
+                                                    <rect key="frame" x="10" y="9.5" width="354" height="25"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppe-XV-Tbe" customClass="BEMCheckBox">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="UAQ-YK-mWr"/>
+                                                                <constraint firstAttribute="width" constant="25" id="Xeb-ao-5zi"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="checkBoxAction:" destination="Nya-zd-XPA" eventType="valueChanged" id="Bh1-4g-EZB"/>
+                                                            </connections>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3su-Pv-8MD">
+                                                            <rect key="frame" x="35" y="0.0" width="41.5" height="25"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g2T-an-41C">
+                                                            <rect key="frame" x="86.5" y="0.0" width="162.5" height="25"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubb-3g-82L">
+                                                            <rect key="frame" x="259" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="Ybo-yE-0mS"/>
+                                                                <constraint firstAttribute="height" constant="25" id="fec-ES-g1t"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="checkmark.seal" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="acceptEditButtonAction:" destination="Nya-zd-XPA" eventType="touchUpInside" id="uol-F6-BPv"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iv6-yC-F6Z">
+                                                            <rect key="frame" x="294" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="RCn-op-DWu"/>
+                                                            </constraints>
+                                                            <color key="tintColor" systemColor="systemPinkColor"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="xmark.seal" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="exitWithoutSaveAction:" destination="Nya-zd-XPA" eventType="touchUpInside" id="zn4-t9-pXl"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmh-fc-rTR">
+                                                            <rect key="frame" x="329" y="0.0" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="DRa-dQ-vDy"/>
+                                                                <constraint firstAttribute="width" constant="25" id="hoe-sI-RyZ"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="editTaskAction:" destination="Nya-zd-XPA" eventType="touchUpInside" id="ozD-FM-aPv"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="g2T-an-41C" firstAttribute="centerY" secondItem="ZqE-kk-P9T" secondAttribute="centerY" id="fly-Vn-xSC"/>
+                                                        <constraint firstItem="ppe-XV-Tbe" firstAttribute="centerY" secondItem="ZqE-kk-P9T" secondAttribute="centerY" id="lxI-RC-PeA"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="W4e-Oz-glG" firstAttribute="centerY" secondItem="vWs-rE-KE3" secondAttribute="centerY" id="AQt-bQ-A49"/>
-                                                <constraint firstItem="W4e-Oz-glG" firstAttribute="leading" secondItem="W8l-ek-M0u" secondAttribute="trailing" constant="10" id="Ecv-T4-8vh"/>
-                                                <constraint firstItem="W8l-ek-M0u" firstAttribute="centerY" secondItem="vWs-rE-KE3" secondAttribute="centerY" id="Hdw-KQ-6kz"/>
-                                                <constraint firstItem="W8l-ek-M0u" firstAttribute="leading" secondItem="vWs-rE-KE3" secondAttribute="leadingMargin" constant="10" id="y5x-rL-YLT"/>
+                                                <constraint firstItem="ZqE-kk-P9T" firstAttribute="centerY" secondItem="vWs-rE-KE3" secondAttribute="centerY" id="30J-FX-gSs"/>
+                                                <constraint firstItem="ZqE-kk-P9T" firstAttribute="leading" secondItem="vWs-rE-KE3" secondAttribute="leading" constant="10" id="DYB-MB-M64"/>
+                                                <constraint firstItem="ZqE-kk-P9T" firstAttribute="centerX" secondItem="vWs-rE-KE3" secondAttribute="centerX" id="fPd-yP-Umv"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZqE-kk-P9T" secondAttribute="trailing" constant="10" id="nbi-nL-EFc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CDTaskCellLAbel" destination="W4e-Oz-glG" id="YdR-L4-RJZ"/>
-                                            <outlet property="checkBoxCD" destination="W8l-ek-M0u" id="vBx-kV-NPa"/>
+                                            <outlet property="acceptEditTaskButton" destination="ubb-3g-82L" id="w7E-SM-1EW"/>
+                                            <outlet property="checkBoxDone" destination="ppe-XV-Tbe" id="Enl-aA-a6b"/>
+                                            <outlet property="editTaskButton" destination="xmh-fc-rTR" id="mhZ-HF-p7n"/>
+                                            <outlet property="editTaskField" destination="g2T-an-41C" id="5L0-2S-bpB"/>
+                                            <outlet property="exitWithoutSaveButton" destination="Iv6-yC-F6Z" id="Wjn-Mp-gwy"/>
+                                            <outlet property="nameTask" destination="3su-Pv-8MD" id="pLP-vK-naB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -484,19 +599,25 @@
     </scenes>
     <designables>
         <designable name="AJS-sQ-Hsd">
-            <size key="intrinsicContentSize" width="21" height="20"/>
+            <size key="intrinsicContentSize" width="25" height="25"/>
         </designable>
-        <designable name="W8l-ek-M0u">
-            <size key="intrinsicContentSize" width="21" height="20"/>
+        <designable name="ppe-XV-Tbe">
+            <size key="intrinsicContentSize" width="25" height="25"/>
         </designable>
     </designables>
     <resources>
+        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

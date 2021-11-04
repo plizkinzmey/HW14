@@ -1,90 +1,95 @@
 import UIKit
 import CoreData
 
+protocol TaskUpdateCDDelegate: AnyObject {
+    func updateTask(model: Tasks, newTaskName: String?, isDone: Bool?)
+}
+
 class ViewController2c: UIViewController {
     
-    var tasks: [Tasks] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var models = [Tasks]()
+    
     
     @IBOutlet weak var CDTaskField: UITextField!
     @IBOutlet weak var CDAddTaskButton: UIButton!
     @IBOutlet weak var CDTableView: UITableView!
     
-    func saveTask(withTitle title: String) {
+    func getAllTasks() {
+        do {
+            models = try context.fetch(Tasks.fetchRequest())
+            DispatchQueue.main.async {
+                self.CDTableView.reloadData()
+            }
+        }
+        catch {
+            
+        }
+    }
+    
+    func createTask (name: String) {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let entity = NSEntityDescription.entity(forEntityName: "Tasks", in: context) else { return }
-        
-        let taskObject = Tasks(entity: entity, insertInto: context)
-        taskObject.title = title
-        taskObject.isDone = false
+        let newTask = Tasks(context: context)
+        newTask.title = name
+        newTask.isDone = false
         
         do {
             try context.save()
-            tasks.append(taskObject)
-            CDTableView.reloadData()
+            getAllTasks()
+        }
+        catch {
             
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        }
+        
+    }
+    
+    func deleteTask(task: Tasks) {
+        context.delete(task)
+        
+        do {
+            try context.save()
+            getAllTasks()
+        }
+        catch {
+            
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
-        
-        do {
-            tasks = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllTasks()
     }
     
     @IBAction func addTaskCDButton(_ sender: Any) {
-        saveTask(withTitle: CDTaskField.text!)
+        self.createTask(name: CDTaskField.text!)
+        CDTaskField.text = ""
     }
 }
 
 extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        
+        return models.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellCD") as! CDTaskTableViewCell
-        let task = tasks[indexPath.row]
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let model = models[indexPath.row]
+        cell.nameTask.text = model.title
+        cell.model = model
+        cell.isDone = model.isDone
+        cell.editTaskField.isHidden = true
+        cell.acceptEditTaskButton.isHidden = true
+        cell.exitWithoutSaveButton.isHidden = true
+        cell.taskUpdateCDDelegate = self
         
-        cell.CDTaskCellLAbel.text = task.title
-        
-        if tasks[indexPath.row].isDone == true {
-            cell.checkBoxCD.on = true
+        if model.isDone == true {
+            cell.checkBoxDone.on = true
         } else {
-            cell.checkBoxCD.on = false
-        }
-        
-        cell.checkBoxAction = {
-            cell in
-            do {
-//                try context.save()
-                self.tasks[indexPath.row].isDone = !(self.tasks[indexPath.row].isDone)
-                try context.save()
-                self.CDTableView.reloadData()
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-      
+            cell.checkBoxDone.on = false
         }
         return cell
     }
@@ -93,18 +98,9 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
         let delete = UIContextualAction(style: .destructive, title: "Delete") {
             (_, _, completion) in
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let index = indexPath.row
+            let model = self.models[indexPath.row]
+            self.deleteTask(task: model)
             
-            context.delete(self.tasks[index] as NSManagedObject)
-            do {
-                try context.save()
-                self.tasks.remove(at: indexPath.row)
-                self.CDTableView.reloadData()
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
             completion(true)
         }
         
@@ -113,3 +109,26 @@ extension ViewController2c: UITableViewDataSource, UITableViewDelegate {
         return config
     }
 }
+
+extension ViewController2c: TaskUpdateCDDelegate {
+    func updateTask(model: Tasks, newTaskName: String?, isDone: Bool?) {
+        if newTaskName != nil{
+            model.title = newTaskName
+            print(model.title)
+            print(model.isDone)
+        }
+        if isDone != nil {
+            model.isDone = !(model.isDone)
+            print(model.title)
+            print(model.isDone)
+        }
+        do {
+            try context.save()
+            getAllTasks()
+        }
+        catch {
+            
+        }
+    }
+}
+

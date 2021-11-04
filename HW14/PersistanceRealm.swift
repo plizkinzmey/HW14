@@ -44,7 +44,7 @@ class PersistanceRealm {
         }
     }
     
-    func updateTask (taskId: String) {
+    func updateTaskStatus (taskId: String) {
         let task = realm.object(ofType: Task.self, forPrimaryKey: taskId)!
         try! realm.write {
             task.staus = !(task.staus)
@@ -55,6 +55,13 @@ class PersistanceRealm {
         let task = realm.object(ofType: Task.self, forPrimaryKey: taskId)!
         try! realm.write {
             realm.delete(task)
+        }
+    }
+    
+    func updateTaskName (taskId: String, taskName: String) {
+        let task = realm.object(ofType: Task.self, forPrimaryKey: taskId)!
+        try! realm.write {
+            task.name = taskName
         }
     }
 }

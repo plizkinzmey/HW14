@@ -1,9 +1,14 @@
 import UIKit
+import CloudKit
 
 
 protocol NewTaskDelegate: AnyObject {
     func addTask(taskText: String)
     func updateConstraintTaskTableTop()
+}
+
+protocol TaskUpdateDelegate: AnyObject {
+    func updateTask(taskText: String, taskId: String)
 }
 
 class ViewController2b: UIViewController {
@@ -28,6 +33,7 @@ class ViewController2b: UIViewController {
         }
     }
     
+    
     @IBAction func plusButtonAction(_ sender: Any) {
         taskTableTop.constant = 50
     }
@@ -43,7 +49,12 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TaskTableViewCell
+        cell.editTaskField.isHidden = true
+        cell.acceptEditTaskButton.isHidden = true
+        cell.exitWithoutSaveButton.isHidden = true
+        cell.taskUpdateDelegate = self
         cell.nameTask.text = tasks[indexPath.row].0
+        cell.taskId = tasks[indexPath.row].1
         if tasks[indexPath.row].2 == true {
             cell.checkBoxDone.on = true
         } else {
@@ -51,7 +62,7 @@ extension ViewController2b: UITableViewDataSource, UITableViewDelegate {
         }
         cell.checkBoxAction = {
             cell in
-            PersistanceRealm.shared.updateTask(taskId: self.tasks[indexPath.row].1)
+            PersistanceRealm.shared.updateTaskStatus(taskId: self.tasks[indexPath.row].1)
         }
         return cell
     }
@@ -83,5 +94,13 @@ extension ViewController2b: NewTaskDelegate {
     
     func updateConstraintTaskTableTop() {
         taskTableTop.constant = 10
+    }
+}
+
+extension ViewController2b: TaskUpdateDelegate {
+    func updateTask(taskText: String, taskId: String) {
+        PersistanceRealm.shared.updateTaskName(taskId: taskId, taskName: taskText)
+        tasks = PersistanceRealm.shared.loadTasks()
+        taskTable.reloadData()
     }
 }
